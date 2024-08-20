@@ -30,16 +30,15 @@ const currentPage = ref(1);
 const loading = ref(true);
 
 //Fetch data posts
-const url = `https://dummyjson.com/posts?limit=${limit}&skip=${
-  (currentPage.value - 1) * limit
-}`;
-const { data, error, status } = await useFetch(url, {
-  server: false,
-});
-
 const fetchPosts = async () => {
   const pending = status === "pending";
   loading.value = pending;
+  const url = `https://dummyjson.com/posts?limit=${limit}&skip=${
+    (currentPage.value - 1) * limit
+  }`;
+  const { data, error, status } = await useFetch(url, {
+    server: false,
+  });
   if (data.value && Array.isArray(data.value.posts)) {
     if (data.value.posts.length < limit) {
       loading.value = false;

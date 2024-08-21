@@ -7,12 +7,11 @@
             <p>dislike: {{ item.reactions.dislikes }}</p>
         </div>
         <div class="post-comments">
-            <ul>
-                <li v-for="comment in itemComments" :key="comment.id">
+            <h2>List comments</h2>
+                <div class="post-comment-item" v-for="comment in itemComments" :key="comment.id">
                     <h4>{{ comment.user.fullName }} - {{ comment.user.username }}</h4>
                     <p>{{ comment.body }}</p>
-                </li>
-            </ul>
+                </div>
         </div>
         <div class="py-3 flex justify-center">
             <NuxtLink to="/posts" class="btn">Back</NuxtLink>

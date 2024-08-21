@@ -1,5 +1,5 @@
 <template>
-    <div>
+  <div class="pb-4">
     <label for="sort-select">Sort By:</label>
     <select id="sort-select" v-model="selectedSort" @change="emitSort">
       <option value="title:asc">Title (Ascending)</option>
@@ -11,13 +11,13 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue';
+import { ref } from "vue";
 
-    const emit = defineEmits(['update:sort']);
+const emit = defineEmits(["update:sort"]);
 
-    const selectedSort = ref('title:asc');
+const selectedSort = ref("title:asc");
 
-    const emitSort = () => {
-    emit('update:sort', selectedSort.value);
-    };
+const emitSort = () => {
+  emit("update:sort", selectedSort.value);
+};
 </script>

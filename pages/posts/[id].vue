@@ -24,14 +24,14 @@ definePageMeta({
     layout: 'posts'
 })
 const {id} = useRoute().params;
-const data = await useFetch(`https://dummyjson.com/posts/${id}`, {
+const config = useRuntimeConfig();
+
+const myDumyAPI = config.public.myDummyAPI;
+const data = await useFetch(`${myDumyAPI}/posts/${id}`, {
     key: id
 })
 const item = data.data.value;
-
-'https://dummyjson.com/posts/1/comments'
-
-const  dataComments = await useFetch(`https://dummyjson.com/posts/${id}/comments`, {
+const  dataComments = await useFetch(`${myDumyAPI}/posts/${id}/comments`, {
     key: id
 })
 const itemComments = dataComments.data.value.comments

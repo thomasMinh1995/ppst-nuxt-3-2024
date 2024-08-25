@@ -48,9 +48,11 @@ const searchQuery = ref(""); // Search query state
 // Fetch data posts
 const fetchPosts = async () => {
   loading.value = true; // Set loading to true when fetching begins
+  const config = useRuntimeConfig();
 
+  const myDumyAPI = config.public.myDummyAPI;
   const [field, order] = sortCriteria.value.split(":");
-  let url = `https://dummyjson.com/posts?limit=${limit}&skip=${(currentPage.value - 1) * limit}&sortBy=${field}&order=${order}`;
+  let url = `${myDumyAPI}/posts?limit=${limit}&skip=${(currentPage.value - 1) * limit}&sortBy=${field}&order=${order}`;
 
   if (searchQuery.value) {
     url += `&q=${encodeURIComponent(searchQuery.value)}`; // Add search query to URL

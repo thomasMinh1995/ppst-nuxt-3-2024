@@ -2,5 +2,10 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss']
+  modules: ['@nuxtjs/tailwindcss'],
+  runtimeConfig: {
+    public: {
+      myDummyAPI: process.env.NUXT_PUBLIC_API_URL
+    }
+  }
 })

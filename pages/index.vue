@@ -1,6 +1,12 @@
 <template>
     <div>
-        <h1>This is an home page</h1>
+        <h1 class="text-center">This is an home page</h1>
+        <div v-for="quote in quotesList" class="grid grid-cols-1">
+            <div class="flex justify-center flex-col items-center border-2 border-solid border-slate-400 rounded-md my-4">
+                <p class="italic pb-3 text-base text-center">{{ quote.quote }}</p>
+                <p class="text-base">{{ quote.author }}</p>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -20,12 +26,9 @@
 // const item = data.data.value;
 // console.log('hello', item)
 
-// export default {
-//     async setup() {
-        const { data, error } = await useFetch('https://dummyjson.com/quotes');
+    const { data: quotes, error } = await useFetch('https://dummyjson.com/quotes');
 
-        console.log('data', data.value?.quotes)
-        // return { quotes: data.value?.quotes, error: error.value };
-//     }
-// }
+    const quotesList = quotes.value?.quotes;
+
+    console.log('data', quotes.value?.quotes)
 </script>

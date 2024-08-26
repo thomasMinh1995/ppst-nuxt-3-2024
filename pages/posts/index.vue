@@ -57,7 +57,7 @@ const fetchPosts = async () => {
   }
 
   const { data, error } = await useFetch(url, {
-    server: false,
+    server: true,
   });
 
   if (error.value) {
